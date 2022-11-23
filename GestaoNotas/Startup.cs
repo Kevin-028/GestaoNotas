@@ -29,9 +29,9 @@ namespace GestaoNotas
             services.AddEntityFrameworkSqlServer()
                 .AddDbContext<BancoContext>(o => o.UseSqlServer(Configuration.GetConnectionString("DataBase")));
 
-            services.AddScoped<IAlunoRepository, AlunoRepository>();
-            services.AddScoped<ITurmaRepository, TurmaRepository>();
-            services.AddScoped<IDiciplinaRepository, DiciplinaRepository>();
+            //services.AddScoped<IAlunoRepository, AlunoRepository>();
+            //services.AddScoped<ITurmaRepository, TurmaRepository>();
+            //services.AddScoped<IDiciplinaRepository, DiciplinaRepository>();
 
         }
         public void Configure(WebApplication app, IWebHostEnvironment environment)

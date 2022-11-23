@@ -1,7 +1,15 @@
 
+using Gestao.dominio;
 using GestaoNotas;
+using GestaoNotas.Repositorio;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddRazorPages();
+
+builder.Services.AddScoped<IAlunoRepository, AlunoRepository>();
+builder.Services.AddScoped<ITurmaRepository, TurmaRepository>();
+builder.Services.AddScoped<IProfRepository, ProfessorRepository>();
+builder.Services.AddScoped<IDiciplinaRepository, DiciplinaRepository>();
 
 var startup = new Startup(builder.Configuration);
 

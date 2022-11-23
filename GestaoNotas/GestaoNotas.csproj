@@ -7,15 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\NovaPasta\**" />
     <Compile Remove="NovaPasta\**" />
     <Compile Remove="Views - Cópia\**" />
     <Compile Remove="wwwroot\lib\bootstrap\scss\**" />
+    <Content Remove="Migrations\NovaPasta\**" />
     <Content Remove="NovaPasta\**" />
     <Content Remove="Views - Cópia\**" />
     <Content Remove="wwwroot\lib\bootstrap\scss\**" />
+    <EmbeddedResource Remove="Migrations\NovaPasta\**" />
     <EmbeddedResource Remove="NovaPasta\**" />
     <EmbeddedResource Remove="Views - Cópia\**" />
     <EmbeddedResource Remove="wwwroot\lib\bootstrap\scss\**" />
+    <None Remove="Migrations\NovaPasta\**" />
     <None Remove="NovaPasta\**" />
     <None Remove="Views - Cópia\**" />
     <None Remove="wwwroot\lib\bootstrap\scss\**" />
@@ -37,6 +41,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Adpter\" />
   </ItemGroup>
 
 </Project>

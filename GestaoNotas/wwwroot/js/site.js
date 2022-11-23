@@ -8,20 +8,45 @@ function PostData(url, data, successCallback) {
     console.log(url)
     console.log(data)
 
-    $.ajax
-        ({
-            url: url,
-            type: 'POST',
-            data: data,
-            cache: false,
-            contentType: false,
-            ProcessData: false,
-            success: function (result) {
-                successCallback(result)
-            },
+        $.ajax
+            ({
+                url: url,
+                type: 'POST',
+                data: data,
+                cache: false,
+                success: function (result) {
+                    successCallback(result)
+                },
 
-            error: function (xhr) {
-                console.log(xhr)
-            }
-        })
+                error: function (xhr) {
+                    console.log(xhr)
+                }
+            })
 }
+//$.ajax
+//    ({
+//        url: url,
+//        type: 'POST',
+//        data: new FormData(data),
+//        cache: false,
+//        success: function (result) {
+//            successCallback(result)
+//        },
+
+//        error: function (xhr) {
+//            console.log(xhr)
+//        }
+//    })
+
+//type: 'POST',
+//    url: url,
+//        data: JSON.stringify(data),
+//            contentType: "application/json; chatset=utf-8",
+//                dataType: "json",
+//                    success: function (result) {
+//                        successCallback(result)
+//                    },
+
+//error: function (xhr) {
+//    console.log(xhr)
+//}

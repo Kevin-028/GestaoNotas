@@ -6,7 +6,7 @@ namespace GestaoNotas.Repositorio
     {
         List<Aluno> GetAll();
 
-        Aluno adcionar(Aluno contato);
+        Aluno adcionar(Aluno aluno);
 
     }
 }

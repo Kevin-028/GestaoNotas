@@ -1,7 +1,9 @@
 ﻿using Gestao.dominio;
 using GestaoNotas.Models;
+using GestaoNotas.Models.ViewModel;
 using GestaoNotas.Repositorio;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Diagnostics;
 
 namespace GestaoNotas.Controllers
@@ -12,19 +14,28 @@ namespace GestaoNotas.Controllers
 
         private readonly ITurmaRepository _turmaRepository;
 
+        private readonly IProfRepository _profRepository;
+
         private readonly ILogger<HomeController> _logger;
 
 
-        public HomeController(ILogger<HomeController> logger)
+
+        public HomeController(ILogger<HomeController> logger, IAlunoRepository alunoRepository, ITurmaRepository turmaRepository, IProfRepository profRepository)
         {
             _logger = logger;
+            _alunoRepository = alunoRepository;
+            _turmaRepository = turmaRepository;
+            _profRepository = profRepository;
+
         }
+
 
         public IActionResult Index()
         {
-            //List<Aluno> alunos = _alunoRepository.GetAll();
 
-            return View();
+            List<Aluno> alunos = _alunoRepository.GetAll();
+
+            return View(alunos);
         }
         public IActionResult Privacy()
         {
@@ -53,17 +64,36 @@ namespace GestaoNotas.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
         [HttpPost]
-        public IActionResult CriarAluno(Aluno aluno)
+        public IActionResult CriarAluno(alunoViewModel view)
         {
 
-            //_alunoRepository.adcionar(aluno);
+            Aluno aluno = new Aluno(view.Nome, view.Email, view.Campus, view.Cpf, view.Telefone, view.Sexo, view.Endereco , view.Renda);
+
+                _alunoRepository.adcionar(aluno);
+
 
             return RedirectToAction("Index");
+
         }   
-        public IActionResult CriarTurma(Turma turma)
+
+        //public IActionResult CriarTurma(Turma turma)
+        //{
+        //    Turma aluno = new Aluno(view.Nome, view.Email, view.Campus, view.Cpf, view.Telefone, view.Sexo, view.Endereco, view.Renda);
+            
+            
+        //    _turmaRepository.adcionar(turma);
+
+        //    return RedirectToAction("Index");
+        //}
+
+        public IActionResult CriarProf(ProfViewModel view)
         {
-            _turmaRepository.adcionar(turma);
+            Professor professor = new Professor(view.Nome, view.Campus);
+
+
+            _profRepository.adcionar(professor);
 
             return RedirectToAction("Index");
         }

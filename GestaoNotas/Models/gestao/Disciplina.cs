@@ -5,18 +5,15 @@ namespace Gestao.dominio
 {
     public class Disciplina
     {
-        public int IdDiciplina { get; private set; }
-        public int IdProfessor { get; private set; }
+        public int IdDiciplina { get;  set; }
+        public int IdProfessor { get;  set; }
+        public string NomeDiciplina { get;  set; }
+        public int? Nota { get;  set; }
+        public string? DataAvaliacao { get;  set; }
+        public int? IdProf { get;  set; }
+        public int? idTurma { get;  set; }
 
-
-        public string NomeDiciplina { get; private set; }
-        public int Nota { get; private set; }
-        public string DataAvaliacao { get; private set; }
-
-        public int IdProf { get; private set; }
-        public int idTurma { get; private set; }
-
-        protected Disciplina() { }
+        public Disciplina() { }
 
         public Disciplina(int idProf, string nomeDiciplina, int notas, string dataAvaliacao)
         {

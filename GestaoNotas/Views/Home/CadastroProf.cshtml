@@ -32,13 +32,10 @@
 
                 var aluno = {
                     Nome: document.querySelector("#Nome").value,
-                    Email: document.querySelector("#Email").value,
                     Campus: document.querySelector("#Campus").value,
-                    Cpf: document.querySelector("#Cpf").value,
-                    Telefone: document.querySelector("#Telefone").value
                 }
 
-                PostData('@Url.Action("CriarAluno", "Home")', aluno, sucess)
+                PostData('@Url.Action("CriarProf", "Home")', aluno, sucess)
             })
             function sucess(result) {
 

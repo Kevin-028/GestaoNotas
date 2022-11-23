@@ -15,6 +15,7 @@ namespace GestaoNotas.Repositorio
         {
             //add no banco de dados
             _bancoContext.Alunos.Add(aluno);
+
             _bancoContext.SaveChanges();
 
             return aluno;

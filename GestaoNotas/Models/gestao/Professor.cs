@@ -16,7 +16,7 @@ namespace Gestao.dominio
         //public IReadOnlyCollection<Disciplina> Disciplinas => _disciplina;
 
 
-        protected Professor() { }
+        public Professor() { }
 
         public Professor(string campus, string nome)
         {
