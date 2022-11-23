@@ -1,6 +1,8 @@
 ﻿using GestaoNotas.Data;
+using GestaoNotas.Repositorio;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -20,9 +22,14 @@ namespace GestaoNotas
         {
             services.AddControllersWithViews();
 
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+
 
             services.AddEntityFrameworkSqlServer()
-                .AddDbContext<BancoContext>(o = o.UseSQLServer(ConfigurationBinder.GetConnectionString("DataBase")));
+                .AddDbContext<BancoContext>(o => o.UseSqlServer(Configuration.GetConnectionString("DataBase")));
+
+            services.AddScoped<IAlunoRepository, AlunoRepository>();
 
         }
         public void Configure(WebApplication app, IWebHostEnvironment environment)
@@ -39,6 +46,8 @@ namespace GestaoNotas
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseSession();
 
             app.UseAuthorization();
 

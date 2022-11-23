@@ -6,32 +6,32 @@ namespace Gestao.dominio
     public class Aluno
     {
         public int Id { get; set; }
-        public string? Nome { get; private set; }
-        public string? Email { get; private set; }
-        public string? Campus { get; private set; }
-        public string? Cpf { get; private set; }
-        public int? Telefone { get; private set; }
-        public int? RA { get; private set; }
-        public string? Sexo { get; private set; }
-        public string? Renda { get; private set; }
-        public string? Endereco { get; private set; }
+        public string Nome { get; private set; }
+        public string Email { get; private set; }
+        public string Campus { get; private set; }
+        public string Cpf { get; private set; }
+        public int Telefone { get; private set; }
+        public int RA { get; private set; }
+        public string Sexo { get; private set; }
+        public string Renda { get; private set; }
+        public string Endereco { get; private set; }
 
-        public int? IdTurma { get; private set; }
+        public int IdTurma { get; private set; }
         public Turma Turma{ get; private set; }
 
 
         protected Aluno() { }
-        public Aluno(string name,string email,string campus, string cpf, int telefone, int ra, string sexo, string renda, string endereco)
+        public Aluno(string name,string email,string campus, string cpf, int telefone, string sexo, string endereco)
         {
             SetName(name);
             SetEmail(email);
             SetCampus(campus);
             SetCPF(cpf); 
             SetTelefone(telefone);
-            SetRA(ra);
             SetSexo(sexo);
             SetEndereco(endereco);
         }
+
         public void SetTurma(int idTurma) => IdTurma = idTurma; 
 
         public void SetName(string name)

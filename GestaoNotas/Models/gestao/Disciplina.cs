@@ -6,18 +6,19 @@ namespace Gestao.dominio
     public class Disciplina
     {
         public int IdDiciplina { get; private set; }
+        public int IdProfessor { get; private set; }
+
+
         public string NomeDiciplina { get; private set; }
-        public decimal Nota { get; private set; }
+        public int Nota { get; private set; }
         public string DataAvaliacao { get; private set; }
 
         public int IdProf { get; private set; }
-        public Professor Professor { get; private set; }
-
-        private readonly List<Turma> _turma;
-        public IReadOnlyCollection<Turma> Turmas => _turma;
+        public int idTurma { get; private set; }
 
         protected Disciplina() { }
-        public Disciplina(int idDiciplina, int idProf, string nomeDiciplina, decimal notas, string dataAvaliacao)
+
+        public Disciplina(int idProf, string nomeDiciplina, int notas, string dataAvaliacao)
         {
             SetNomeDiciplina(nomeDiciplina);
             SetNota(notas);
@@ -30,7 +31,7 @@ namespace Gestao.dominio
         {
             NomeDiciplina = nome;
         }
-        public void SetNota(decimal nota)
+        public void SetNota(int nota)
         {
             Nota = nota;
         }
@@ -39,22 +40,7 @@ namespace Gestao.dominio
             DataAvaliacao = dataAvaliacao;
 
         }
-
-        public void SetTurma(Turma turma)
-        {
-            turma.SetDisciplina(IdDiciplina);
-            _turma.Add(turma);
-        }
-        public void RemoveTurma(int idTurma)
-        {
-            var a = _turma.Where(x => x.IdTurma == idTurma).SingleOrDefault();
-            if (a != null)
-            {
-                _turma.Remove(a);
-            }
-        }
-
-
+        public void SetDisciplina(int idDiciplina) => IdDiciplina = idDiciplina;
 
     }
 }

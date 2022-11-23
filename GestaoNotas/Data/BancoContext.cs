@@ -1,4 +1,5 @@
 ﻿using Gestao.dominio;
+using GestaoNotas.Data.map;
 using Microsoft.EntityFrameworkCore;
 
 namespace GestaoNotas.Data
@@ -14,5 +15,16 @@ namespace GestaoNotas.Data
         public DbSet<Professor> Professor { get; set; }
         public DbSet<Turma> Turma { get; set; }
 
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new AlunoMap());
+            modelBuilder.ApplyConfiguration(new ProfessorMap());
+            modelBuilder.ApplyConfiguration(new TurmaMap());
+            modelBuilder.ApplyConfiguration(new DisciplinaMap());
+
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
