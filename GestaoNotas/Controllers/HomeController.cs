@@ -12,7 +12,6 @@ namespace GestaoNotas.Controllers
 
         private readonly ITurmaRepository _turmaRepository;
 
-
         private readonly ILogger<HomeController> _logger;
 
 
@@ -23,6 +22,8 @@ namespace GestaoNotas.Controllers
 
         public IActionResult Index()
         {
+            //List<Aluno> alunos = _alunoRepository.GetAll();
+
             return View();
         }
         public IActionResult Privacy()
@@ -33,7 +34,18 @@ namespace GestaoNotas.Controllers
         {
             return View();
         }
-
+        public IActionResult CadastroTurma()
+        {
+            return View();
+        }
+        public IActionResult CadastroProf()
+        {
+            return View();
+        }
+        public IActionResult CadastroDisciplina()
+        {
+            return View();
+        }
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -41,11 +53,11 @@ namespace GestaoNotas.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
         [HttpPost]
         public IActionResult CriarAluno(Aluno aluno)
         {
-            _alunoRepository.adcionar(aluno);
+
+            //_alunoRepository.adcionar(aluno);
 
             return RedirectToAction("Index");
         }   
@@ -55,6 +67,7 @@ namespace GestaoNotas.Controllers
 
             return RedirectToAction("Index");
         }
+
 
     }
 }

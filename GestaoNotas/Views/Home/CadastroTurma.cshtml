@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Cadastro Turma";
+}
+
+<div class="container">
+    <div class="my-3">
+        @ViewData["Title"]
+    </div>
+    <div class="row">
+        <form>
+            <div class="mb-3">
+                <label for="Descricao" class="form-label">Descricao</label>
+                <input type="text" class="form-control" id="Descricao" aria-describedby="emailHelp">
+            </div>
+
+            <div class="mb-3">
+                <label for="Coordenador" class="form-label">Coordenador</label>
+                <input type="text" class="form-control" id="Coordenador" aria-describedby="emailHelp">
+            </div>
+
+            <button id="BotaoAluno" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+
+        $(function () {
+
+            $.ajaxSetup({ cache: false });
+
+            $("#BotaoAluno").click(function () {
+
+                var aluno = {
+                    Descricao: document.querySelector("#Descricao").value,
+                    Coordenador: document.querySelector("#Coordenador").value,
+                }
+
+                PostData('@Url.Action("CriarAluno", "Home")', aluno, sucess)
+            })
+            function sucess(result) {
+
+                console.log(result)
+                console.log("Foi poha")
+            }
+
+        })
+
+
+
+    </script>
+}

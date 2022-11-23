@@ -5,55 +5,19 @@
 <div class="container">
     <div class="my-3">
         Alunos cadastrados:
-    </div>   
-    <div class="my-3">
-        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-          <div class="card-header">Header</div>
-          <div class="card-body">
-            <h5 class="card-title">Primary card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-    </div>  
-
-    
-    <div class="my-3">
-        Alunos cadastrados:
     </div>
-    <table class="table">
-        <thead>
-            <tr>
-
-                <th scope="col">RA</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Email</th>
-                <th scope="col">Telefone</th>
-                <th scope="col">Editar</th>
-
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>mdo</td>
-                <td>mdo</td>
-            </tr>
-        </tbody>
-    </table>
     <section class="grid grid-Card">
         <div class="border container-card">
             <div class="container">
                 <div class="row">
-                    <div class="col-3 ">
+                    <div class="col-3">
                         <i class="fas fa-user-circle img"></i>
                     </div>    
                     <div class="col-9">
                         <div class="row">
                             <div class="col">
                                 <span class="fw-bold">
-                                    Nome do cara
+                                    Aluno1
                                 </span>
                             </div>                     
                         </div>       
@@ -63,29 +27,25 @@
                                     Nome do cara
                                 </span>
                             </div>                     
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>    
-        <div class="border container-card">
-            <div class="container">
-                <div class="row">
-                    <div class="col-3 ">
-                        <i class="fas fa-user-circle img"></i>
-                    </div>    
-                    <div class="col-9">
-                        <div class="row">
-                            <div class="col">
-                                <span class="fw-bold">
-                                    Nome do cara
-                                </span>
-                            </div>                     
-                        </div>       
+                        </div>             
                         <div class="row">
                             <div class="col">
                                 <span class="bold">
-                                    Nome do cara
+                                    Profissão
+                                </span>
+                            </div>                     
+                        </div>         
+                        <div class="row">
+                            <div class="col">
+                                <span class="bold">
+                                    Empresa
+                                </span>
+                            </div>                     
+                        </div>               
+                        <div class="row">
+                            <div class="col">
+                                <span class="bold">
+                                    RA: 0000001
                                 </span>
                             </div>                     
                         </div>
@@ -93,6 +53,53 @@
                 </div>
             </div>
         </div>
+        <div class="border container-card">
+            <div class="container">
+                <div class="row">
+                    <div class="col-3">
+                        <i class="fas fa-user-circle img"></i>
+                    </div>
+                    <div class="col-9">
+                        <div class="row">
+                            <div class="col">
+                                <span class="fw-bold">
+                                    Aluno2
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <span class="bold">
+                                    Nome do cara
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <span class="bold">
+                                    Profissão
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <span class="bold">
+                                    Empresa
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <span class="bold">
+                                    RA: 0000001
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </section>
 </div>
 <style>
@@ -109,7 +116,7 @@
       content: attr(data-keyword);
     }
     .grid-Card{
-        grid-template-columns: repeat(auto-fit, minmax(186px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
         
         grid-gap: 9px;
 
@@ -122,7 +129,7 @@
         border-radius: 5px;
     }
     .img{
-        font-size:35px;
+        font-size:3rem;
     }
 
 

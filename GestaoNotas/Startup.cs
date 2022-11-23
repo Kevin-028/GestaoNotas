@@ -31,6 +31,7 @@ namespace GestaoNotas
 
             services.AddScoped<IAlunoRepository, AlunoRepository>();
             services.AddScoped<ITurmaRepository, TurmaRepository>();
+            services.AddScoped<IDiciplinaRepository, DiciplinaRepository>();
 
         }
         public void Configure(WebApplication app, IWebHostEnvironment environment)

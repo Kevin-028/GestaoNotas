@@ -19,5 +19,10 @@ namespace GestaoNotas.Repositorio
 
             return aluno;
         }
+
+        public List<Aluno> GetAll()
+        {
+            return _bancoContext.Alunos.ToList();
+        }
     }
 }

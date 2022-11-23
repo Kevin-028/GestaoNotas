@@ -16,8 +16,8 @@ namespace Gestao.dominio
         public string Renda { get; private set; }
         public string Endereco { get; private set; }
 
-        public int IdTurma { get; private set; }
-        public Turma Turma{ get; private set; }
+        //public int? IdTurma { get; private set; }
+        //public Turma Turma{ get; private set; }
 
 
         protected Aluno() { }
@@ -32,7 +32,7 @@ namespace Gestao.dominio
             SetEndereco(endereco);
         }
 
-        public void SetTurma(int idTurma) => IdTurma = idTurma; 
+        //public void SetTurma(int idTurma) => IdTurma = idTurma; 
 
         public void SetName(string name)
         {
