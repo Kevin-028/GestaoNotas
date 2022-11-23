@@ -10,6 +10,9 @@ namespace GestaoNotas.Controllers
     {
         private readonly IAlunoRepository _alunoRepository;
 
+        private readonly ITurmaRepository _turmaRepository;
+
+
         private readonly ILogger<HomeController> _logger;
 
 
@@ -43,6 +46,12 @@ namespace GestaoNotas.Controllers
         public IActionResult CriarAluno(Aluno aluno)
         {
             _alunoRepository.adcionar(aluno);
+
+            return RedirectToAction("Index");
+        }   
+        public IActionResult CriarTurma(Turma turma)
+        {
+            _turmaRepository.adcionar(turma);
 
             return RedirectToAction("Index");
         }

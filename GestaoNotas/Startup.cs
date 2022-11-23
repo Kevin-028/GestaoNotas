@@ -30,6 +30,7 @@ namespace GestaoNotas
                 .AddDbContext<BancoContext>(o => o.UseSqlServer(Configuration.GetConnectionString("DataBase")));
 
             services.AddScoped<IAlunoRepository, AlunoRepository>();
+            services.AddScoped<ITurmaRepository, TurmaRepository>();
 
         }
         public void Configure(WebApplication app, IWebHostEnvironment environment)
