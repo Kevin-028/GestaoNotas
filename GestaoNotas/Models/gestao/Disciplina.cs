@@ -3,13 +3,13 @@ using System.Linq;
 
 namespace Gestao.dominio
 {
-    public class Disciplina : Entity
+    public class Disciplina
     {
         public int IdDiciplina { get; private set; }
         public string NomeDiciplina { get; private set; }
         public decimal Nota { get; private set; }
         public string DataAvaliacao { get; private set; }
-        
+
         public int IdProf { get; private set; }
         public Professor Professor { get; private set; }
 

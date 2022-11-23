@@ -15,7 +15,7 @@ namespace Gestao.dominio
         void delete(TEntity entity);
         TEntity FindByID(params object[] key);
         TEntity FindDetacheByID(params object[] key);
-        TEntity FindAsNoTracking(Expression<Func<TEntity,bool>> predicate);
+        TEntity FindAsNoTracking(Expression<Func<TEntity, bool>> predicate);
         IEnumerable<TEntity> FindListNoTracking(Expression<Func<TEntity, bool>> predicate);
         System.Data.Common.DbConnection GetDbConnection();
 
