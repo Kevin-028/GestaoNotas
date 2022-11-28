@@ -1,4 +1,4 @@
-﻿
+﻿@model GestaoNotas.Models.ViewModel.alunoViewModel
 @{
     ViewData["Title"] = "Cadastro Aluno";
 }
@@ -7,8 +7,10 @@
     <div class="my-3">
         @ViewData["Title"]
     </div>
+
     <div class="row">
         <form>
+
             <div class="mb-3">
                 <label for="Nome" class="form-label">Nome</label>
                 <input type="text"   class="form-control" id="Nome" aria-describedby="emailHelp">
@@ -52,26 +54,51 @@
     <script type="text/javascript">
         $(function () {
             $.ajaxSetup({ cache: false });
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+
 
             $("#BotaoAluno").click(function () {
 
                 var Aluno = {
                     Nome: document.querySelector("#Nome").value,
                     Email: document.querySelector("#Email").value,
-                    Sexo: document.querySelector("#Sexo").value,
                     Campus: document.querySelector("#Campus").value,
                     Cpf: document.querySelector("#Cpf").value,
-                    Endereco: document.querySelector("#Endereco").value,
                     Telefone: document.querySelector("#Telefone").value,
-                    Renda: document.querySelector("#Renda").value
+                    Sexo: document.querySelector("#Sexo").value,
+                    Renda: document.querySelector("#Renda").value,
+                    Endereco: document.querySelector("#Endereco").value
                 }
 
-                PostData('@Url.Action("CriarAluno", "Home")', Aluno, sucess)
+                PostData('@Url.Action("CriarAluno", "Home")', Aluno, sucess, error)
             }) 
-            function sucess(result) {
 
-                console.log(result)
-                console.log("Foi poha")
+            function sucess(result) {
+                    console.log("Foi")
+
+                Command: toastr["success"]("My name is Inigo Montoya. You killed my father. Prepare to die!")
+            }
+
+            function error(result) {
+                console.log("NOT")
+
+                Command: toastr["success"]("My name is Inigo Montoya. You killed my father. Prepare to die!")
             }
         })
 

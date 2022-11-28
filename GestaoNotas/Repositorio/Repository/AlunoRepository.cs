@@ -1,13 +1,16 @@
-﻿using Gestao.dominio;
-using GestaoNotas.Data;
+﻿using GestaoNotas.Data;
+using GestaoNotas.gestao;
+using GestaoNotas.IRepository;
+using GestaoNotas.Models.Adpter;
+using GestaoNotas.Models.ViewModel;
 
-namespace GestaoNotas.Repositorio
+namespace GestaoNotas.Repository
 {
     public class AlunoRepository : IAlunoRepository
     {
         private readonly BancoContext _bancoContext;
-        public AlunoRepository(BancoContext bancoContext) 
-        { 
+        public AlunoRepository(BancoContext bancoContext)
+        {
             _bancoContext = bancoContext;
         }
 
@@ -24,6 +27,10 @@ namespace GestaoNotas.Repositorio
         public List<Aluno> GetAll()
         {
             return _bancoContext.Alunos.ToList();
+        }
+        public List<alunoViewModel> GetAlunoViewModels()
+        {
+            return _bancoContext.AlunosViewModel.ToList();
         }
     }
 }

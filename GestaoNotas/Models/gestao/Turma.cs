@@ -1,74 +1,68 @@
 ﻿using System;
 using System.Linq;
 
-namespace Gestao.dominio
+namespace GestaoNotas.gestao
 {
     public class Turma
     {
-        public int IdTurma { get; private set; }
-        public int IdDiciplina { get; private set; }
-
-        public string Descricao { get; private set;}
-        public string Coordenador { get; private set; }
-
-        
-
-        //private readonly List<Aluno> _aluno;
-        //public IReadOnlyCollection<Aluno> Alunos => _aluno;
+        public int IdTurma { get; set; }
+        public string Descricao { get; set; }
+        public string Coordenador { get; set; }
 
 
-        //private readonly List<Disciplina> _Disciplina;
-        //public IReadOnlyCollection<Disciplina> Disciplinas => _Disciplina;
+        public readonly List<Aluno> _aluno;
+        public IReadOnlyCollection<Aluno> Alunos => _aluno;
+
+
+        public readonly List<Disciplina> _Disciplina;
+        public IReadOnlyCollection<Disciplina> Disciplinas => _Disciplina;
 
 
         protected Turma() { }
         public Turma(string descricao, string coordenador)
         {
-            //_aluno = new List<Aluno>();
+            _aluno = new List<Aluno>();
+            _Disciplina = new List<Disciplina>();
 
             SetDescricao(descricao);
             SetCoordenador(coordenador);
-
         }
-        public void SetDescricao(string descricao)
+
+        public void SetDescricao(string descricao) => Descricao = descricao;
+
+        public void SetCoordenador(string coordenador) => Coordenador = coordenador;
+
+        public void AddAluno(Aluno aluno)
         {
-            Descricao = descricao;
+            aluno.SetTurmaId(IdTurma);
+            _aluno.Add(aluno);
         }
-        public void SetCoordenador(string coordenador)
+
+        public void RemoveAluno(int idAluno)
         {
-            Coordenador = coordenador;
+            Aluno result = (Aluno)_aluno.Where(x => x.IdAluno == idAluno);
+
+            if (result != null)
+            {
+                _aluno.Remove(result);
+            }
         }
-        //public void SetAluno(Aluno aluno)
-        //{
-        //    aluno.SetTurma(IdTurma);
 
-        //    _aluno.Add(aluno);
-        //}
+        public void AddDisciplina(Disciplina disciplina)
+        {
+            disciplina.SetTurma(IdTurma);
+            _Disciplina.Add(disciplina);
 
-        //public void RemoveAluno(int idAluno)
-        //{
-        //    var a = _aluno.Where(x => x.IdTurma == idAluno).SingleOrDefault();
-        //    if(a != null)
-        //    {
-        //        _aluno.Remove(a);
-        //    }
-        //}     
-        
-        //public void SetDisciplina(Disciplina disciplina)
-        //{
-        //    disciplina.SetDisciplina(IdDiciplina);
+        }
 
-        //    _Disciplina.Add(disciplina);
-        //}
-
-        //public void RemoveDisciplina(int idDisciplina)
-        //{
-        //    var a = _Disciplina.Where(x => x.IdDiciplina == idDisciplina).SingleOrDefault();
-        //    if(a != null)
-        //    {
-        //        _Disciplina.Remove(a);
-        //    }
-        //}
+        public void RemoveDisciplina(Disciplina disciplina, int idDisciplina)
+        {
+            Disciplina result = _Disciplina.Find(x => x.IdDiciplina == disciplina.IdDiciplina);
+            if (result != null)
+            {
+                _Disciplina.Remove(result);
+            }
+        }
 
     }
 }

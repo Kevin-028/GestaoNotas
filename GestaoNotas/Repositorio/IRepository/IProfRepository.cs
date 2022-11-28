@@ -1,6 +1,6 @@
-﻿using Gestao.dominio;
+﻿using GestaoNotas.gestao;
 
-namespace GestaoNotas.Repositorio
+namespace GestaoNotas.IRepository
 {
     public interface IProfRepository
     {

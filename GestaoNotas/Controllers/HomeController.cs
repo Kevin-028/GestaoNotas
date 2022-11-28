@@ -1,10 +1,12 @@
-﻿using Gestao.dominio;
+﻿using GestaoNotas.gestao;
+using GestaoNotas.IRepository;
 using GestaoNotas.Models;
 using GestaoNotas.Models.ViewModel;
-using GestaoNotas.Repositorio;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Diagnostics;
+using GestaoNotas.Models.Adpter;
+using System.Linq;
+using System.Data.SqlTypes;
 
 namespace GestaoNotas.Controllers
 {
@@ -32,15 +34,20 @@ namespace GestaoNotas.Controllers
 
         public IActionResult Index()
         {
+            List<alunoViewModel> alunos = _alunoRepository.GetAlunoViewModels();
 
-            List<Aluno> alunos = _alunoRepository.GetAll();
+            var a = new List<alunoViewModel>();
 
-            return View(alunos);
+
+
+            //List<alunoViewModel> alunoViewModels = Adapter.ToAluno(alunos);
+
+            return View();
         }
         public IActionResult Privacy()
         {
             return View();
-        }     
+        }
         public IActionResult Cadastro()
         {
             return View();
@@ -65,24 +72,30 @@ namespace GestaoNotas.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+        //[HttpPost]
+        //public IActionResult CriarAluno(alunoViewModel view)
+        //{
+        //    Aluno aluno = new Aluno(view.Nome, view.Email, view.Campus, view.Cpf, view.Telefone, view.Sexo, view.Endereco, view.Renda);
+        //    _alunoRepository.adcionar(aluno);
+        //    return RedirectToAction("Index");
+        //}
+
         [HttpPost]
         public IActionResult CriarAluno(alunoViewModel view)
         {
 
-            Aluno aluno = new Aluno(view.Nome, view.Email, view.Campus, view.Cpf, view.Telefone, view.Sexo, view.Endereco , view.Renda);
+            Aluno aluno = Adapter.ToAluno(view);
 
-                _alunoRepository.adcionar(aluno);
+            _alunoRepository.adcionar(aluno);
 
-
-            return RedirectToAction("Index");
-
-        }   
+            return RedirectToAction("~/home/sucesso");
+        }
 
         //public IActionResult CriarTurma(Turma turma)
         //{
         //    Turma aluno = new Aluno(view.Nome, view.Email, view.Campus, view.Cpf, view.Telefone, view.Sexo, view.Endereco, view.Renda);
-            
-            
+
+
         //    _turmaRepository.adcionar(turma);
 
         //    return RedirectToAction("Index");
@@ -97,6 +110,7 @@ namespace GestaoNotas.Controllers
 
             return RedirectToAction("Index");
         }
+
 
 
     }

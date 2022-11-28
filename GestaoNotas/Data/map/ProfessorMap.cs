@@ -1,4 +1,4 @@
-﻿using Gestao.dominio;
+﻿using GestaoNotas.gestao;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace GestaoNotas.Data.map
@@ -7,8 +7,7 @@ namespace GestaoNotas.Data.map
     {
         public void Configure(EntityTypeBuilder<Professor> builder)
         {
-            builder.HasKey(x => x.IdProf);
-            //builder.HasOne(x => x.Disciplinas);
+            builder.HasKey(x => x.IdProfessor);
 
         }
     }

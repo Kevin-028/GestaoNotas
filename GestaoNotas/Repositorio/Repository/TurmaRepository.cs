@@ -1,7 +1,8 @@
-﻿using Gestao.dominio;
-using GestaoNotas.Data;
+﻿using GestaoNotas.Data;
+using GestaoNotas.gestao;
+using GestaoNotas.IRepository;
 
-namespace GestaoNotas.Repositorio
+namespace GestaoNotas.Repository
 {
     public class TurmaRepository : ITurmaRepository
     {
@@ -16,7 +17,7 @@ namespace GestaoNotas.Repositorio
             //add no banco de dados
 
 
-            _bancoContext.Turma.Add(turma);
+            _bancoContext.Turmas.Add(turma);
             _bancoContext.SaveChanges();
 
             return turma;

@@ -1,7 +1,8 @@
-﻿using Gestao.dominio;
-using GestaoNotas.Data;
+﻿using GestaoNotas.Data;
+using GestaoNotas.gestao;
+using GestaoNotas.IRepository;
 
-namespace GestaoNotas.Repositorio
+namespace GestaoNotas.Repository
 {
     public class DiciplinaRepository : IDiciplinaRepository
     {
@@ -14,11 +15,12 @@ namespace GestaoNotas.Repositorio
         public Disciplina adcionar(Disciplina diciplina)
         {
             //add no banco de dados
-            _bancoContext.Disciplina.Add(diciplina);
+            _bancoContext.Disciplinas.Add(diciplina);
             _bancoContext.SaveChanges();
 
             return diciplina;
         }
+
 
     }
 }

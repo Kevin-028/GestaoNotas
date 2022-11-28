@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
 
-namespace Gestao.dominio
+namespace GestaoNotas.gestao
 {
     public class Aluno
     {
-        public int Id { get; set; }
+        public int IdAluno { get; set; }
         public string Nome { get; set; }
         public string Email { get; set; }
         public string Campus { get; set; }
@@ -16,8 +16,12 @@ namespace Gestao.dominio
         public string Renda { get; set; }
         public string Endereco { get; set; }
 
-        //public int? IdTurma { get; private set; }
-        //public Turma Turma{ get; private set; }
+
+        public int? IdTurma { get; set; }
+        public Turma? Turma { get; set; }
+
+        public int? IdNotaDiciplina { get; set; }
+        public NotaDiciplina? NotaDiciplina { get; set; }
 
 
         public Aluno() { }
@@ -34,45 +38,17 @@ namespace Gestao.dominio
             SetRenda(renda);
         }
 
-        //public void SetTurma(int idTurma) => IdTurma = idTurma; 
-
-        public void SetName(string name)
-        {
-            Nome = name;
-        }
-        public void SetEmail(string email)
-        {
-            Email = email;
-        }
-        public void SetCampus(string campus)
-        {
-            Campus = campus;
-        }
-        public void SetCPF(string cpf)
-        {
-            Cpf = cpf;
-        }
-        public void SetTelefone(int telefone)
-        {
-            Telefone = telefone;
-        }
-        public void SetRA(int ra)
-        {
-            RA = ra;
-        }
-        public void SetSexo(string sexo)
-        {
-            Sexo = sexo;
-        }
-        public void SetRenda(string renda)
-        {
-            Renda = renda;
-        }
-        public void SetEndereco(string endereco)
-        {
-            Endereco = endereco;
-        }
-
+        public void SetName(string name) => Nome = name;
+        public void SetEmail(string email) => Email = email;
+        public void SetCampus(string campus) => Campus = campus;
+        public void SetCPF(string cpf) => Cpf = cpf;
+        public void SetTelefone(int telefone) => Telefone = telefone;
+        public void SetRA(int ra) => RA = ra;
+        public void SetSexo(string sexo) => Sexo = sexo;
+        public void SetRenda(string renda) => Renda = renda;
+        public void SetEndereco(string endereco) => Endereco = endereco;
+        public void SetTurmaId(int turmaId) => IdTurma = turmaId;
+        public void SetNotaId(int idnota) => IdNotaDiciplina = idnota;
 
     }
 }

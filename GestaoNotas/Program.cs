@@ -1,7 +1,7 @@
 
-using Gestao.dominio;
 using GestaoNotas;
-using GestaoNotas.Repositorio;
+using GestaoNotas.IRepository;
+using GestaoNotas.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();

@@ -26,10 +26,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\Adpter\AlunoViewModel.cs" />
     <Compile Remove="Repositorio\IRepository.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Models\ViewModel\ListAluno.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.9" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.9" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.9" />
+    <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0">
       <PrivateAssets>all</PrivateAssets>
@@ -41,10 +51,12 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="6.25.0" />
+    <PackageReference Include="System.Text.Encodings.Web" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Adpter\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

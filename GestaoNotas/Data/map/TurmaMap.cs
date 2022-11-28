@@ -1,4 +1,4 @@
-﻿using Gestao.dominio;
+﻿using GestaoNotas.gestao;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -9,6 +9,7 @@ namespace GestaoNotas.Data.map
         public void Configure(EntityTypeBuilder<Turma> builder)
         {
             builder.HasKey(x => x.IdTurma);
+
         }
     }
 }
