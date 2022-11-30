@@ -146,7 +146,7 @@
             title.dataset.Aluno = this.dataset.id;
             var id = { id: this.dataset.id}
 
-            PostData('@Url.Action("TurmaAlunoPartial", "Home")', id, foi);
+            PostData('@Url.Action("TurmaTabela", "Home")', id, foi);
 
             function foi(Result){
                 RenderPartial(Result, $("#renderPartial"))

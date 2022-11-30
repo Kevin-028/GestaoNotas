@@ -162,7 +162,6 @@ namespace GestaoNotas.Controllers
         {
 
 
-
             ViewBag.IdTurma = new SelectList(_turmaRepository.GetTurmaViewModels(), "IdTurma", "Descricao");
 
             ViewBag.IdProfessor = new SelectList(_profRepository.GetProfViewModels(), "IdProfessor", "Nome");
