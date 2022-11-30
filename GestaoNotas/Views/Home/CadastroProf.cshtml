@@ -25,6 +25,27 @@
         </form>
     </div>
 </div>
+<button id="TargetModalTurma" type="button" class="btn btn-secondary my-3">
+    Pesquisa cadastradas
+</button>
+<div class="modal" id="Modal" tabindex="-1" aria-labelledby="Modal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="titleModal"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <section id="renderPartial">
+                </section>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
 
 @section scripts{
     <script type="text/javascript">
@@ -49,5 +70,15 @@
                 }
             }
         })
+        $(document).on("click", "#TargetModalTurma", function (e) {
+            id = null;
+            PostData('@Url.Action("ProfTabela", "Home")', id, foi);
+
+            function foi(Result) {
+                RenderPartial(Result, $("#renderPartial"))
+            }
+            $("#Modal").modal("toggle");
+
+        });
     </script>
 }

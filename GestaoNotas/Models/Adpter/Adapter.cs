@@ -62,10 +62,10 @@ namespace GestaoNotas.Models.Adpter
                 IdTurma = disciplina.IdTurma,
                 IdDisciplina = disciplina.IdDiciplina,
                 IdProfessor = disciplina.IdProfessor,
-                NomeDisciplina = disciplina.NomeDiciplina,
+                NomeDisciplina = disciplina.NomeDisciplina,
                 DataAvaliacao = disciplina.DataAvaliacao,
             };
-        }    
+        }
         public static Aluno ToNewTurmaAluno(AddTurmaAlunoViewModel addTurmaAlunoViewModel)
         {
             return new Aluno

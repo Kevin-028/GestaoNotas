@@ -12,8 +12,8 @@
     <div class="row">
         <form>
             <div class="mb-3">
-                @Html.LabelFor(model => model.NomeDiciplina, new {@class ="form-label"})
-                @Html.TextBoxFor(model => model.NomeDiciplina, new {@class ="form-control"})
+                @Html.LabelFor(model => model.NomeDisciplina, new {@class ="form-label"})
+                @Html.TextBoxFor(model => model.NomeDisciplina, new {@class ="form-control"})
             </div>
 
             <div class="mb-3">
@@ -33,6 +33,29 @@
         </form>
     </div>
 </div>
+<button id="TargetModalTurma" type="button" class="btn btn-secondary my-3">
+    Pesquisa cadastradas
+</button>
+<div class="modal" id="Modal" tabindex="-1" aria-labelledby="Modal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="titleModal"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <section id="renderPartial">
+
+                </section>
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
 
 @section scripts{
     <script type="text/javascript">
@@ -42,7 +65,7 @@
 
             $("#BotaoAluno").click(function () {
                 var disciplina = {
-                    NomeDiciplina: document.querySelector("#NomeDiciplina").value,
+                    NomeDiciplina: document.querySelector("#NomeDisciplina").value,
                     DataAvaliacao: document.querySelector("#DataAvaliacao").value,
                     IdProfessor: document.querySelector("#IdProfessor").value,
                     IdTurma: document.querySelector("#IdTurma").value,
@@ -61,6 +84,16 @@
                 }
             }
 
+            $(document).on("click", "#TargetModalTurma", function (e) {
+                id = null;
+                PostData('@Url.Action("DisciplinaTabela", "Home")', id, foi);
+
+                function foi(Result) {
+                    RenderPartial(Result, $("#renderPartial"))
+                }
+                $("#Modal").modal("toggle");
+
+            });
         })
 
 

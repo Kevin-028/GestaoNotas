@@ -8,7 +8,7 @@ namespace GestaoNotas.Models.ViewModel
         public int IdDiciplina { get; set; }
 
         [Display(Name = "Nome da Disciplina")]
-        public string NomeDiciplina { get; set; }
+        public string NomeDisciplina { get; set; }
 
         [Display(Name = "Data Avaliação")]
         public string DataAvaliacao { get; set; }

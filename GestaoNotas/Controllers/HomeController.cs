@@ -55,6 +55,8 @@ namespace GestaoNotas.Controllers
         }
         public IActionResult CadastroTurma()
         {
+            List<TurmaViewModel> turma = _turmaRepository.GetTurmaViewModels();
+
             ViewBag.tema = "_Layout";
 
             return View();
@@ -67,6 +69,8 @@ namespace GestaoNotas.Controllers
         }
         public IActionResult CadastroDisciplina()
         {
+
+
             ViewBag.tema = "_Layout";
 
             ViewBag.IdTurma = new SelectList(_turmaRepository.GetTurmaViewModels(), "IdTurma", "Descricao");
@@ -166,15 +170,22 @@ namespace GestaoNotas.Controllers
 
             return PartialView("_addNotaAluno");
         }      
-        public PartialViewResult TurmaAlunoPartial(int id)
+        public PartialViewResult DisciplinaTabela()
         {
 
+            List<DisciplicaViewModel> disciplina = _disciplinaRepository.GetDesciplinaViewModels();
 
-            ViewBag.IdAluno = id;
 
-            ViewBag.IdTurma = new SelectList(_turmaRepository.GetTurmaViewModels(), "IdTurma", "Descricao");
+            return PartialView("_DisciplinaTabela", disciplina);
+        }  
 
-            return PartialView("_addTurma");
+        public PartialViewResult ProfTabela()
+        {
+
+            List<ProfViewModel> professor = _profRepository.GetProfViewModels();
+
+
+            return PartialView("_ProfTabela", professor);
         }
 
 

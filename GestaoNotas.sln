@@ -7,10 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestaoNotas", "GestaoNotas\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gestao.MVC", "Gestao.MVC", "{60794B52-84A7-4FC3-AA31-6985870A87E4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gestao.Dominio", "Gestao.Dominio", "{73CA1208-0259-4738-9D15-83EC998C675E}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gestao.dominio", "Gestao.dominio\Gestao.dominio.csproj", "{89FA2997-131A-451A-B629-DE4B84B9E568}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,17 +17,12 @@ Global
 		{20E99B1C-215C-4AAA-8843-255E0A5EB9CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20E99B1C-215C-4AAA-8843-255E0A5EB9CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20E99B1C-215C-4AAA-8843-255E0A5EB9CF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{89FA2997-131A-451A-B629-DE4B84B9E568}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{89FA2997-131A-451A-B629-DE4B84B9E568}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{89FA2997-131A-451A-B629-DE4B84B9E568}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{89FA2997-131A-451A-B629-DE4B84B9E568}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{20E99B1C-215C-4AAA-8843-255E0A5EB9CF} = {60794B52-84A7-4FC3-AA31-6985870A87E4}
-		{89FA2997-131A-451A-B629-DE4B84B9E568} = {73CA1208-0259-4738-9D15-83EC998C675E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {683A1853-A667-4E82-9AD3-7B874488DF63}

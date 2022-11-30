@@ -9,14 +9,11 @@ namespace GestaoNotas.gestao
         public string Descricao { get; set; }
         public string Coordenador { get; set; }
 
-
         public readonly List<Aluno> _aluno;
         public IReadOnlyCollection<Aluno> Alunos => _aluno;
 
-
         public readonly List<Disciplina> _Disciplina;
         public IReadOnlyCollection<Disciplina> Disciplinas => _Disciplina;
-
 
         public Turma() { }
         public Turma(string descricao, string coordenador)
