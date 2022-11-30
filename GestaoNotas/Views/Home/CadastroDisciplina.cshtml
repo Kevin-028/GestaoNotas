@@ -1,5 +1,8 @@
-﻿@{
-    ViewData["Title"] = "Cadastro Diciplina";
+﻿@model GestaoNotas.Models.ViewModel.DisciplicaViewModel
+@{
+    ViewData["Title"] = "Cadastro Disciplina";
+    Layout = ViewBag.tema;
+
 }
 
 <div class="container">
@@ -9,16 +12,24 @@
     <div class="row">
         <form>
             <div class="mb-3">
-                <label for="NomeDiciplina" class="form-label">Nome Diciplina</label>
-                <input type="text" class="form-control" id="NomeDiciplina" aria-describedby="emailHelp">
+                @Html.LabelFor(model => model.NomeDiciplina, new {@class ="form-label"})
+                @Html.TextBoxFor(model => model.NomeDiciplina, new {@class ="form-control"})
             </div>
 
             <div class="mb-3">
-                <label for="Nota" class="form-label">Nota</label>
-                <input type="text" class="form-control" id="Nota" aria-describedby="emailHelp">
+                @Html.LabelFor(model => model.DataAvaliacao, new {@class ="form-label"})
+                @Html.TextBoxFor(model => model.DataAvaliacao, new {@class ="form-control"})
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Descricao, new {@class ="form-label"})
+                @Html.DropDownListFor(model => model.IdTurma, null,"",new{@class="form-select"})
+            </div>      
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Nome, new {@class ="form-label"})
+                @Html.DropDownListFor(model => model.IdProfessor, null,"",new{@class="form-select"})
             </div>
 
-            <button id="BotaoAluno" class="btn btn-primary">Submit</button>
+            <div id="BotaoAluno" class="btn btn-primary">@ViewData["Title"]</div>
         </form>
     </div>
 </div>
@@ -28,22 +39,26 @@
         $(function () {
             $.ajaxSetup({ cache: false });
 
-            $("#BotaoAluno").click(function () {
 
-                var aluno = {
-                    Nome: document.querySelector("#Nome").value,
-                    Email: document.querySelector("#Email").value,
-                    Campus: document.querySelector("#Campus").value,
-                    Cpf: document.querySelector("#Cpf").value,
-                    Telefone: document.querySelector("#Telefone").value
+            $("#BotaoAluno").click(function () {
+                var disciplina = {
+                    NomeDiciplina: document.querySelector("#NomeDiciplina").value,
+                    DataAvaliacao: document.querySelector("#DataAvaliacao").value,
+                    IdProfessor: document.querySelector("#IdProfessor").value,
+                    IdTurma: document.querySelector("#IdTurma").value,
                 }
 
-                PostData('@Url.Action("CriarAluno", "Home")', aluno, sucess)
-            })
-            function sucess(result) {
+                PostData('@Url.Action("addDisciplina", "Home")', disciplina, sucess)
 
-                console.log(result)
-                console.log("Foi poha")
+            })
+            function sucess(Result) {
+                if (Result.cadastrado) {
+                    toastr["success"]("Cadastrado com sucesso")
+
+                }else{
+                    toastr["error"]("Erro no cadastro")
+
+                }
             }
 
         })

@@ -1,0 +1,170 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = ViewBag.tema;
+
+}
+
+<div class="container-fluid">
+    <section class=" my-3 container-fluid">
+        <div class="row">
+@*            @if (Model == null)
+            {
+                <div class="my-3">
+                    Nenhum aluno cadastrado
+                </div>
+            }
+            else
+            {*@
+
+            <div class="col text-center">
+                <div class="border container-card">
+                    <div class="row align-items-center">
+                        <div class="col-4">
+                            <i class="fas fa-user-circle img"></i>
+                        </div>
+                        <div class="col-8">
+                            <div class="row align-items-center">
+                                <div class="col-12">
+                                    <span class="fw-bold">
+                                        Kevin Romeiro Barbosa
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col-12">
+                                    <span class="bold">
+                                        kevinromeiro@gmail.com
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col-col-12">
+                                    <span class="bold">
+                                        Paulista
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <span class="bold">
+                                        RA: 061020205
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col text-center">
+                <div class="border container-card">
+                    <div class="row align-items-center">
+                        <div class="col-4 icone">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <div class="col-8">
+                            <div class="row align-items-center">
+                                <div class="col-12">
+                                    <span class="fw-bold">
+                                        Usuario
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col-12">
+                                    <span class="bold">
+                                        Editar  perfil
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>      
+            <div class="col text-center">
+                <div class="border container-card">
+                    <div class="row align-items-center">
+                        <div class="col-4 icone">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <div class="col-8">
+                            <div class="row align-items-center">
+                                <div class="col-12">
+                                    <span class="fw-bold">
+                                        Notas e Disciplinas
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+            <div class="col text-center">
+                <div class="border container-card">
+                    <div class="row align-items-center">
+                        <div class="col-3 icone">
+                            <i class="fas fa-times-circle"></i>
+                        </div>
+                        <div class="col-8">
+                            <div class="row align-items-center">
+                                <div class="col-12">
+                                    <span class="fw-bold">
+                                        SAIR
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+
+@*            }
+*@
+        </div>
+    </section>
+</div>
+<style>
+    .grid {
+        display: grid;
+        padding: 2em;
+        counter-reset: grid-items;
+        position: relative;
+    }
+
+        .grid::before {
+            position: absolute;
+            padding-left: 3em;
+            content: attr(data-keyword);
+        }
+
+    .grid-Card {
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        grid-gap: 9px;
+        grid-auto-flow: column;
+    }
+
+    .container-card {
+        background-color: white;
+        border-width: 0px 0px 0px 3px !important;
+        border-color: purple !important;
+        border-radius: 5px;
+        width: 100%;
+        min-width: 250px;
+        min-height: 130px;
+        margin: 5px 10px;
+
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .img {
+        font-size: 3rem;
+        width: 25px;
+    }
+    .icone{
+        font-size: 2rem;
+        width: 50px;
+    }
+
+</style>

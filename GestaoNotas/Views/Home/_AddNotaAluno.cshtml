@@ -1,0 +1,29 @@
+﻿@model GestaoNotas.Models.ViewModel.alunoViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@*<div class="container-fluid">
+    <div class="row">
+        <form>
+            <div class="mb-3">
+                @Html.HiddenFor(model => model.IdAluno)
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Nota, new {@class ="form-label"} )
+                @Html.TextBoxFor(model => model.Nota, new {@class ="form-control"})
+            </div>
+            <div class="mb-3 form-check">
+                @Html.LabelFor(model => model.Nome, new {@class ="form-label"})
+                @Html.DropDownListFor(model => model.IdProfessor, null,"",new{@class="form-select"})
+            </div>      
+            <div class="mb-3 form-check">
+                @Html.LabelFor(model => model.Descricao, new {@class ="form-label"})
+                @Html.DropDownListFor(model => model.IdTurma, null,"",new{@class="form-select"})
+            </div>
+            <div type="submit" class="btn btn-primary">Submit</div>
+        </form>
+    </div>
+</div>
+*@

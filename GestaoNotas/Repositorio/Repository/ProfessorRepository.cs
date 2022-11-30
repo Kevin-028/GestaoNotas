@@ -1,6 +1,9 @@
-﻿using GestaoNotas.Data;
+﻿using Dapper;
+using GestaoNotas.Data;
 using GestaoNotas.gestao;
 using GestaoNotas.IRepository;
+using GestaoNotas.Models.ViewModel;
+using Microsoft.EntityFrameworkCore;
 
 namespace GestaoNotas.Repository
 {
@@ -12,15 +15,32 @@ namespace GestaoNotas.Repository
             _bancoContext = bancoContext;
         }
 
-        public Professor adcionar(Professor professor)
+        public bool adcionar(Professor professor)
         {
             //add no banco de dados
 
             _bancoContext.Professores.Add(professor);
 
-            _bancoContext.SaveChanges();
+            try
+            {
+                _bancoContext.SaveChanges();
 
-            return professor;
+                return true;
+
+            }
+            catch
+            {
+                return false;
+
+            }
         }
+
+        public List<ProfViewModel> GetProfViewModels()
+        {
+            var a = _bancoContext.Database.GetDbConnection().Query<ProfViewModel>($"SELECT * FROM Professores").ToList();
+
+            return a;
+        }
+
     }
 }

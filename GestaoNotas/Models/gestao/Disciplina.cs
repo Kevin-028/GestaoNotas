@@ -5,8 +5,8 @@ namespace GestaoNotas.gestao
 {
     public class Disciplina
     {
-        public int IdDiciplina { get; set; }
-        public string NomeDiciplina { get; set; }
+        public int IdDisciplina { get; set; }
+        public string NomeDisciplina { get; set; }
         public string DataAvaliacao { get; set; }
 
         public int IdTurma { get; set; }
@@ -31,18 +31,18 @@ namespace GestaoNotas.gestao
 
         public void SetProf(Professor professor) => IdProfessor = professor.IdProfessor;
         public void SetTurma(int idTurma) => IdTurma = idTurma;
-        public void SetNomeDiciplina(string nome) => NomeDiciplina = nome;
+        public void SetNomeDiciplina(string nome) => NomeDisciplina = nome;
         public void SetAvaliacao(string dataAvaliacao) => DataAvaliacao = dataAvaliacao;
-        public void SetDisciplina(int idDiciplina) => IdDiciplina = idDiciplina;
+        public void SetDisciplina(int idDiciplina) => IdDisciplina = idDiciplina;
         public void AddNota(NotaDiciplina nota)
         {
-            nota.SetDisciplinaId(IdDiciplina);
+            nota.SetDisciplinaId(IdDisciplina);
             _nota.Add(nota);
         }
 
         public void RemoveNota(int idNota)
         {
-            NotaDiciplina result = (NotaDiciplina)_nota.Where(x => x.IdNotaDiciplina == idNota);
+            NotaDiciplina result = (NotaDiciplina)_nota.Where(x => x.IdNotaDisciplina == idNota);
 
             if (result != null)
             {

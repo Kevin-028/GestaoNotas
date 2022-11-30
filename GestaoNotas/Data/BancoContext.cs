@@ -1,6 +1,5 @@
 ﻿using GestaoNotas.Data.map;
 using GestaoNotas.gestao;
-using GestaoNotas.Models.ViewModel;
 using Microsoft.EntityFrameworkCore;
 
 namespace GestaoNotas.Data
@@ -12,11 +11,11 @@ namespace GestaoNotas.Data
 
         }
         public DbSet<Aluno> Alunos { get; set; }
-        public DbSet<alunoViewModel> AlunosViewModel { get; set; }
         public DbSet<Disciplina> Disciplinas { get; set; }
         public DbSet<Professor> Professores { get; set; }
         public DbSet<Turma> Turmas { get; set; }
         public DbSet<NotaDiciplina> NotaDiciplinas{get; set;}
+        public DbSet<Login> Logins{get; set;}
 
 
 
@@ -29,6 +28,7 @@ namespace GestaoNotas.Data
             modelBuilder.ApplyConfiguration(new ProfessorMap());
             modelBuilder.ApplyConfiguration(new TurmaMap());
             modelBuilder.ApplyConfiguration(new NotaDisciplinaMap());
+            modelBuilder.ApplyConfiguration(new LoginMap());
 
 
 

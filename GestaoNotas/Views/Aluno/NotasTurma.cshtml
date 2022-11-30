@@ -1,0 +1,136 @@
+﻿@{
+    ViewData["Title"] = "Notas e Disciplinas";
+    Layout = ViewBag.tema;
+
+}
+
+<div class="container-fluid">
+    <section class=" my-3 container-fluid">
+        <div class="row">
+            Turma: Eng Computação
+        </div>
+        <div class="row">
+            <div class="col text-center">
+                <div class="border container-card">
+                    <div class="row align-items-center">
+                        <div class="col-12">
+                            <div class="row align-items-center">
+                                <div class="col-12">
+                                    <span class="fw-bold edic">
+                                       Sistemas Digitais
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">       
+                                <div class="col text-center">
+                                     Nota 1:<br>
+                                     5
+                                </div>           
+                                <div class="col text-center">
+                                     Nota 2:<br>
+                                     10
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+            <div class="col text-center">
+                <div class="border container-card">
+                    <div class="row align-items-center">
+                        <div class="col-12">
+                            <div class="row align-items-center">
+                                <div class="col-12">
+                                    <span class="fw-bold">
+                                        Eletronica Digital
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col text-center">
+                                    Nota 1:<br>
+                                    5
+                                </div>
+                                <div class="col text-center">
+                                    Nota 2:<br>
+                                    2
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col text-center">
+                <div class="border container-card">
+                    <div class="row align-items-center">
+                        <div class="col-12">
+                            <div class="row align-items-center">
+                                <div class="col-12">
+                                    <span class="fw-bold">
+                                        Eletronica Analogica
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col text-center">
+                                    Nota 1:<br>
+                                    10
+                                </div>
+                                <div class="col text-center">
+                                    Nota 2:<br>
+                                    3
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<style>
+    .grid {
+        display: grid;
+        padding: 2em;
+        counter-reset: grid-items;
+        position: relative;
+    }
+
+        .grid::before {
+            position: absolute;
+            padding-left: 3em;
+            content: attr(data-keyword);
+        }
+
+    .grid-Card {
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        grid-gap: 9px;
+        grid-auto-flow: column;
+    }
+
+    .container-card {
+        background-color: white;
+        border-width: 0px 0px 0px 3px !important;
+        border-color: purple !important;
+        border-radius: 5px;
+        width: 100%;
+        min-width: 250px;
+        min-height: 130px;
+        margin: 5px 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .img {
+        font-size: 3rem;
+        width: 25px;
+    }
+
+    .icone {
+        font-size: 2rem;
+        width: 50px;
+    }
+
+
+</style>

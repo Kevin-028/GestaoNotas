@@ -1,6 +1,8 @@
 ﻿@model GestaoNotas.Models.ViewModel.alunoViewModel
 @{
     ViewData["Title"] = "Cadastro Aluno";
+    Layout = ViewBag.tema;
+
 }
 
 <div class="container">
@@ -45,7 +47,7 @@
                 <input type="text" class="form-control" id="Renda" aria-describedby="emailHelp">
             </div>
 
-            <button  id="BotaoAluno" class="btn btn-primary">Submit</button>
+            <div id="BotaoAluno" class="btn btn-primary">@ViewData["Title"]</div>
         </form>
     </div>
 </div>
@@ -53,26 +55,6 @@
 @section scripts{
     <script type="text/javascript">
         $(function () {
-            $.ajaxSetup({ cache: false });
-            toastr.options = {
-                "closeButton": false,
-                "debug": false,
-                "newestOnTop": false,
-                "progressBar": false,
-                "positionClass": "toast-top-right",
-                "preventDuplicates": false,
-                "onclick": null,
-                "showDuration": "300",
-                "hideDuration": "1000",
-                "timeOut": "5000",
-                "extendedTimeOut": "1000",
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "fadeIn",
-                "hideMethod": "fadeOut"
-            }
-
-
             $("#BotaoAluno").click(function () {
 
                 var Aluno = {
@@ -85,24 +67,20 @@
                     Renda: document.querySelector("#Renda").value,
                     Endereco: document.querySelector("#Endereco").value
                 }
+                PostData('@Url.Action("CriarAluno", "Home")', Aluno, sucess)
+                function sucess(Result) {
 
-                PostData('@Url.Action("CriarAluno", "Home")', Aluno, sucess, error)
-            }) 
+                    if (Result.cadastrado) {
+                        toastr["success"]("Cadastrado com sucesso")
 
-            function sucess(result) {
-                    console.log("Foi")
+                    }else{
+                        toastr["error"]("Erro no cadastro")
 
-                Command: toastr["success"]("My name is Inigo Montoya. You killed my father. Prepare to die!")
-            }
+                    }
+                }
+            })
 
-            function error(result) {
-                console.log("NOT")
-
-                Command: toastr["success"]("My name is Inigo Montoya. You killed my father. Prepare to die!")
-            }
         })
-
-
 
     </script>
 }

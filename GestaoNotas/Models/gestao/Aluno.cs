@@ -18,10 +18,10 @@ namespace GestaoNotas.gestao
 
 
         public int? IdTurma { get; set; }
-        public Turma? Turma { get; set; }
+        public Turma Turma { get; set; }
 
-        public int? IdNotaDiciplina { get; set; }
-        public NotaDiciplina? NotaDiciplina { get; set; }
+        public int? IdNotaDisciplina { get; set; }
+        public NotaDiciplina NotaDisciplina { get; set; }
 
 
         public Aluno() { }
@@ -48,7 +48,7 @@ namespace GestaoNotas.gestao
         public void SetRenda(string renda) => Renda = renda;
         public void SetEndereco(string endereco) => Endereco = endereco;
         public void SetTurmaId(int turmaId) => IdTurma = turmaId;
-        public void SetNotaId(int idnota) => IdNotaDiciplina = idnota;
+        public void SetNotaId(int idnota) => IdNotaDisciplina = idnota;
 
     }
 }

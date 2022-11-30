@@ -1,5 +1,8 @@
-﻿@{
+﻿@model GestaoNotas.Models.ViewModel.TurmaViewModel
+@{
     ViewData["Title"] = "Cadastro Turma";
+    Layout = ViewBag.tema;
+
 }
 
 <div class="container">
@@ -9,7 +12,8 @@
     <div class="row">
         <form>
             <div class="mb-3">
-                <label for="Descricao" class="form-label">Descricao</label>
+                
+                <label for="Descricao" class="form-label">Descrição</label>
                 <input type="text" class="form-control" id="Descricao" aria-describedby="emailHelp">
             </div>
 
@@ -18,7 +22,7 @@
                 <input type="text" class="form-control" id="Coordenador" aria-describedby="emailHelp">
             </div>
 
-            <button id="BotaoAluno" class="btn btn-primary">Submit</button>
+            <div id="BotaoAluno" class="btn btn-primary">@ViewData["Title"]</div>
         </form>
     </div>
 </div>
@@ -32,17 +36,23 @@
 
             $("#BotaoAluno").click(function () {
 
-                var aluno = {
+                var turma = {
                     Descricao: document.querySelector("#Descricao").value,
                     Coordenador: document.querySelector("#Coordenador").value,
                 }
 
-                PostData('@Url.Action("CriarAluno", "Home")', aluno, sucess)
+                PostData('@Url.Action("AddTurma", "Home")', turma, sucess)
             })
-            function sucess(result) {
+            function sucess(Result) {
 
-                console.log(result)
-                console.log("Foi poha")
+                if (Result.cadastrado) {
+                    toastr["success"]("Cadastrado com sucesso")
+
+                } else {
+                    toastr["error"]("Erro no cadastro")
+
+                }
+
             }
 
         })

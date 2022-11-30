@@ -9,7 +9,7 @@ namespace GestaoNotas.Models.Adpter
         {
             return new Aluno
             {
-                IdAluno = aluno.Id,
+                IdAluno = aluno.IdAluno,
                 Nome = aluno.Nome,
                 Email = aluno.Email,
                 Campus = aluno.Campus,
@@ -26,7 +26,6 @@ namespace GestaoNotas.Models.Adpter
         {
             return new alunoViewModel
             {
-                Id = aluno.IdAluno,
                 Nome = aluno.Nome,
                 Email = aluno.Email,
                 Campus = aluno.Campus,
@@ -38,5 +37,57 @@ namespace GestaoNotas.Models.Adpter
                 Endereco = aluno.Endereco,
             };
         }
+        public static Professor ToProf(ProfViewModel prof)
+        {
+            return new Professor
+            {
+                IdProfessor = prof.IdProfessor,
+                Campus = prof.Campus,
+                Nome = prof.Nome,
+            };
+        }   
+        public static Turma ToTurma(TurmaViewModel turma)
+        {
+            return new Turma
+            {
+                IdTurma = turma.IdTurma,
+                Descricao = turma.Descricao,
+                Coordenador = turma.Coordenador,
+            };
+        }   
+        public static Disciplina ToDisciplina(DisciplicaViewModel disciplina)
+        {
+            return new Disciplina
+            {
+                IdTurma = disciplina.IdTurma,
+                IdDisciplina = disciplina.IdDiciplina,
+                IdProfessor = disciplina.IdProfessor,
+                NomeDisciplina = disciplina.NomeDiciplina,
+                DataAvaliacao = disciplina.DataAvaliacao,
+            };
+        }    
+        public static Aluno ToNewTurmaAluno(AddTurmaAlunoViewModel addTurmaAlunoViewModel)
+        {
+            return new Aluno
+            {
+                IdTurma = addTurmaAlunoViewModel.IdTurma,
+                IdAluno = addTurmaAlunoViewModel.IdAluno
+
+            };
+        }   
+        public static Login Tologin(LoginViewModel login)
+        {
+            return new Login
+            {
+                Email = login.Email,
+                Senha = login.Senha,
+                perfil = login.perfil
+                
+            };
+        }
+        
+
+
+        
     }
 }

@@ -6,16 +6,14 @@
     <title>@ViewData["Title"] - GestaoNotas</title>
 
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-          rel="stylesheet">   
-    <link src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
           rel="stylesheet">
-
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/GestaoNotas.styles.css" asp-append-version="true" />
-
     <link rel="stylesheet" href="~/lib/fontawesome-free/css/all.min.css" asp-append-version="true" />
     <link href="~/css/sb-admin-2.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="~/css/toast.css" asp-append-version="true" />
 
 </head>
 <body>
@@ -75,9 +73,29 @@
                     <span>Turma</span>
                 </a>
             </li>
-
+@*            <div class="sidebar-heading">
+                Perfil
+            </div>
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="~/Home/Cadastro">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Meu perfil</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="~/Home/Cadastro">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Notas e Perfil</span>
+                </a>
+            </li>*@
 
             <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <div class="sidebar-heading ">
+                Sair
+            </div>
             <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->
@@ -90,7 +108,7 @@
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
-            <div id="content">
+            <div id="container-xxl">
 
                 @RenderBody()
 
@@ -138,13 +156,33 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous" asp-append-version="true"></script> 
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
-    <script src="~/lib/jquery-easing/jquery.easing.min.js" asp-append-version="true"></script>
-
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/toast.js" asp-append-version="true"></script>
     <script src="~/js/sb-admin-2.min.js" asp-append-version="true"></script>
     <script src="~/lib/chart.js/Chart.min.js" asp-append-version="true"></script>
+
+    <script type="text/javascript">
+
+         toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "3000",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"   
+        }
+    </script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

@@ -18,7 +18,7 @@ namespace GestaoNotas.gestao
         public IReadOnlyCollection<Disciplina> Disciplinas => _Disciplina;
 
 
-        protected Turma() { }
+        public Turma() { }
         public Turma(string descricao, string coordenador)
         {
             _aluno = new List<Aluno>();
@@ -57,7 +57,7 @@ namespace GestaoNotas.gestao
 
         public void RemoveDisciplina(Disciplina disciplina, int idDisciplina)
         {
-            Disciplina result = _Disciplina.Find(x => x.IdDiciplina == disciplina.IdDiciplina);
+            Disciplina result = _Disciplina.Find(x => x.IdDisciplina == disciplina.IdDisciplina);
             if (result != null)
             {
                 _Disciplina.Remove(result);

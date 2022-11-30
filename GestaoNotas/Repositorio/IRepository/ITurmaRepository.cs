@@ -1,10 +1,14 @@
 ﻿using GestaoNotas.gestao;
+using GestaoNotas.Models.ViewModel;
 
 namespace GestaoNotas.IRepository
 {
     public interface ITurmaRepository
     {
-        Turma adcionar(Turma turma);
+        bool adcionar(Turma turma);
+        List<TurmaViewModel> GetTurmaViewModels();
+
+        bool CadastroAluno(alunoViewModel aluno);
 
     }
 }

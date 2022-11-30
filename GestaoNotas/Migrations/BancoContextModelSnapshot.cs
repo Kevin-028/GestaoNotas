@@ -22,7 +22,7 @@ namespace GestaoNotas.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Gestao.dominio.Aluno", b =>
+            modelBuilder.Entity("GestaoNotas.gestao.Aluno", b =>
                 {
                     b.Property<int>("IdAluno")
                         .ValueGeneratedOnAdd()
@@ -46,7 +46,7 @@ namespace GestaoNotas.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("IdNotaDiciplina")
+                    b.Property<int?>("IdNotaDisciplina")
                         .HasColumnType("int");
 
                     b.Property<int?>("IdTurma")
@@ -72,20 +72,20 @@ namespace GestaoNotas.Migrations
 
                     b.HasKey("IdAluno");
 
-                    b.HasIndex("IdNotaDiciplina");
+                    b.HasIndex("IdNotaDisciplina");
 
                     b.HasIndex("IdTurma");
 
                     b.ToTable("Gestao_Alunos", (string)null);
                 });
 
-            modelBuilder.Entity("Gestao.dominio.Disciplina", b =>
+            modelBuilder.Entity("GestaoNotas.gestao.Disciplina", b =>
                 {
-                    b.Property<int>("IdDiciplina")
+                    b.Property<int>("IdDisciplina")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdDiciplina"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdDisciplina"));
 
                     b.Property<string>("DataAvaliacao")
                         .IsRequired()
@@ -97,11 +97,11 @@ namespace GestaoNotas.Migrations
                     b.Property<int>("IdTurma")
                         .HasColumnType("int");
 
-                    b.Property<string>("NomeDiciplina")
+                    b.Property<string>("NomeDisciplina")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("IdDiciplina");
+                    b.HasKey("IdDisciplina");
 
                     b.HasIndex("IdProfessor");
 
@@ -110,13 +110,38 @@ namespace GestaoNotas.Migrations
                     b.ToTable("Disciplinas");
                 });
 
-            modelBuilder.Entity("Gestao.dominio.NotaDiciplina", b =>
+            modelBuilder.Entity("GestaoNotas.gestao.Login", b =>
                 {
-                    b.Property<int>("IdNotaDiciplina")
+                    b.Property<int>("IdLogin")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdNotaDiciplina"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdLogin"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Senha")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("perfil")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IdLogin");
+
+                    b.ToTable("Logins");
+                });
+
+            modelBuilder.Entity("GestaoNotas.gestao.NotaDiciplina", b =>
+                {
+                    b.Property<int>("IdNotaDisciplina")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdNotaDisciplina"));
 
                     b.Property<int>("IdDisciplina")
                         .HasColumnType("int");
@@ -124,14 +149,14 @@ namespace GestaoNotas.Migrations
                     b.Property<int>("Nota")
                         .HasColumnType("int");
 
-                    b.HasKey("IdNotaDiciplina");
+                    b.HasKey("IdNotaDisciplina");
 
                     b.HasIndex("IdDisciplina");
 
                     b.ToTable("Notas", (string)null);
                 });
 
-            modelBuilder.Entity("Gestao.dominio.Professor", b =>
+            modelBuilder.Entity("GestaoNotas.gestao.Professor", b =>
                 {
                     b.Property<int>("IdProfessor")
                         .ValueGeneratedOnAdd()
@@ -152,7 +177,7 @@ namespace GestaoNotas.Migrations
                     b.ToTable("Professores");
                 });
 
-            modelBuilder.Entity("Gestao.dominio.Turma", b =>
+            modelBuilder.Entity("GestaoNotas.gestao.Turma", b =>
                 {
                     b.Property<int>("IdTurma")
                         .ValueGeneratedOnAdd()
@@ -173,30 +198,30 @@ namespace GestaoNotas.Migrations
                     b.ToTable("Turmas");
                 });
 
-            modelBuilder.Entity("Gestao.dominio.Aluno", b =>
+            modelBuilder.Entity("GestaoNotas.gestao.Aluno", b =>
                 {
-                    b.HasOne("Gestao.dominio.NotaDiciplina", "NotaDiciplina")
+                    b.HasOne("GestaoNotas.gestao.NotaDiciplina", "NotaDisciplina")
                         .WithMany("Alunos")
-                        .HasForeignKey("IdNotaDiciplina");
+                        .HasForeignKey("IdNotaDisciplina");
 
-                    b.HasOne("Gestao.dominio.Turma", "Turma")
+                    b.HasOne("GestaoNotas.gestao.Turma", "Turma")
                         .WithMany("Alunos")
                         .HasForeignKey("IdTurma");
 
-                    b.Navigation("NotaDiciplina");
+                    b.Navigation("NotaDisciplina");
 
                     b.Navigation("Turma");
                 });
 
-            modelBuilder.Entity("Gestao.dominio.Disciplina", b =>
+            modelBuilder.Entity("GestaoNotas.gestao.Disciplina", b =>
                 {
-                    b.HasOne("Gestao.dominio.Professor", "Professor")
+                    b.HasOne("GestaoNotas.gestao.Professor", "Professor")
                         .WithMany("Disciplina")
                         .HasForeignKey("IdProfessor")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Gestao.dominio.Turma", "Turma")
+                    b.HasOne("GestaoNotas.gestao.Turma", "Turma")
                         .WithMany("Disciplinas")
                         .HasForeignKey("IdTurma")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -207,31 +232,31 @@ namespace GestaoNotas.Migrations
                     b.Navigation("Turma");
                 });
 
-            modelBuilder.Entity("Gestao.dominio.NotaDiciplina", b =>
+            modelBuilder.Entity("GestaoNotas.gestao.NotaDiciplina", b =>
                 {
-                    b.HasOne("Gestao.dominio.Disciplina", "Disciplina")
+                    b.HasOne("GestaoNotas.gestao.Disciplina", "Disciplina")
                         .WithMany("NotaDiciplinas")
                         .HasForeignKey("IdDisciplina");
 
                     b.Navigation("Disciplina");
                 });
 
-            modelBuilder.Entity("Gestao.dominio.Disciplina", b =>
+            modelBuilder.Entity("GestaoNotas.gestao.Disciplina", b =>
                 {
                     b.Navigation("NotaDiciplinas");
                 });
 
-            modelBuilder.Entity("Gestao.dominio.NotaDiciplina", b =>
+            modelBuilder.Entity("GestaoNotas.gestao.NotaDiciplina", b =>
                 {
                     b.Navigation("Alunos");
                 });
 
-            modelBuilder.Entity("Gestao.dominio.Professor", b =>
+            modelBuilder.Entity("GestaoNotas.gestao.Professor", b =>
                 {
                     b.Navigation("Disciplina");
                 });
 
-            modelBuilder.Entity("Gestao.dominio.Turma", b =>
+            modelBuilder.Entity("GestaoNotas.gestao.Turma", b =>
                 {
                     b.Navigation("Alunos");
 

@@ -1,8 +1,12 @@
-﻿namespace GestaoNotas.Models.ViewModel
+﻿using GestaoNotas.gestao;
+
+namespace GestaoNotas.Models.ViewModel
 {
     public class ProfViewModel
     {
-        public string? Campus { get; private set; }
-        public string? Nome { get; private set; }
+        public int IdProfessor { get;  set; }
+        public string Campus { get;  set; }
+        public string Nome { get;  set; }
+        public List<Disciplina> _disciplina { get; set; }
     }
 }

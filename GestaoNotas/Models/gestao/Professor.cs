@@ -5,10 +5,10 @@ namespace GestaoNotas.gestao
 {
     public class Professor
     {
-        public int IdProfessor { get; private set; }
+        public int IdProfessor { get; set; }
 
-        public string Campus { get; private set; }
-        public string Nome { get; private set; }
+        public string Campus { get; set; }
+        public string Nome { get; set; }
 
 
         public readonly List<Disciplina> _disciplina;
@@ -34,7 +34,7 @@ namespace GestaoNotas.gestao
 
         public void SetDisciplina(Disciplina disciplina)
         {
-            if (!_disciplina.Any(x => x.NomeDiciplina == disciplina.NomeDiciplina))
+            if (!_disciplina.Any(x => x.NomeDisciplina == disciplina.NomeDisciplina))
             {
                 _disciplina.Add(disciplina);
             }

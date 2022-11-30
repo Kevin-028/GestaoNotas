@@ -6,7 +6,7 @@ namespace GestaoNotas.Models.ViewModel
     public class alunoViewModel
     {
         [Display(Name = "RA")]
-        public int Id { get; set; }
+        public int IdAluno { get; set; }
         public string Nome { get; set; }
         public string Email { get; set; }
         public string Campus { get; set; }
@@ -17,9 +17,12 @@ namespace GestaoNotas.Models.ViewModel
         public string Renda { get; set; }
         public string Endereco { get; set; }
 
+        public int IdNotaDiciplina { get; set; }
 
         public int IdTurma { get; set; }
-        public int IdNotaDiciplina { get; set; }
+
+        [Display(Name = "Nome da Turma")]
+        public string Descricao { get; set; }
 
     }
 }

@@ -7,19 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\NovaPasta\**" />
     <Compile Remove="NovaPasta\**" />
     <Compile Remove="Views - Cópia\**" />
     <Compile Remove="wwwroot\lib\bootstrap\scss\**" />
-    <Content Remove="Migrations\NovaPasta\**" />
     <Content Remove="NovaPasta\**" />
     <Content Remove="Views - Cópia\**" />
     <Content Remove="wwwroot\lib\bootstrap\scss\**" />
-    <EmbeddedResource Remove="Migrations\NovaPasta\**" />
     <EmbeddedResource Remove="NovaPasta\**" />
     <EmbeddedResource Remove="Views - Cópia\**" />
     <EmbeddedResource Remove="wwwroot\lib\bootstrap\scss\**" />
-    <None Remove="Migrations\NovaPasta\**" />
     <None Remove="NovaPasta\**" />
     <None Remove="Views - Cópia\**" />
     <None Remove="wwwroot\lib\bootstrap\scss\**" />
@@ -53,10 +49,6 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
     <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="6.25.0" />
     <PackageReference Include="System.Text.Encodings.Web" Version="7.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

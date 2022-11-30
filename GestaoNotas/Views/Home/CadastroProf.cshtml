@@ -1,5 +1,8 @@
-﻿@{
+﻿@model GestaoNotas.Models.ViewModel.ProfViewModel
+@{
     ViewData["Title"] = "Cadastro Professor";
+        Layout = ViewBag.tema;
+
 }
 
 <div class="container">
@@ -9,16 +12,16 @@
     <div class="row">
         <form>
             <div class="mb-3">
-                <label for="Nome" class="form-label">Nome do Professor</label>
-                <input type="text" class="form-control" id="Nome" aria-describedby="emailHelp">
+                @Html.LabelFor(model => model.Nome, new {@class ="form-label"})
+                @Html.TextBoxFor(model => model.Nome, new {@class ="form-control"})
             </div>
 
             <div class="mb-3">
-                <label for="Campus" class="form-label">Campus</label>
-                <input type="text" class="form-control" id="Campus" aria-describedby="emailHelp">
+                @Html.LabelFor(model => model.Campus, new {@class ="form-label"})
+                @Html.TextBoxFor(model => model.Campus, new {@class ="form-control"})
             </div>
 
-            <button id="BotaoAluno" class="btn btn-primary">Submit</button>
+            <div id="BotaoAluno" class="btn btn-primary">@ViewData["Title"]</div>
         </form>
     </div>
 </div>
@@ -29,23 +32,22 @@
             $.ajaxSetup({ cache: false });
 
             $("#BotaoAluno").click(function () {
-
-                var aluno = {
+                var professor = {
                     Nome: document.querySelector("#Nome").value,
                     Campus: document.querySelector("#Campus").value,
                 }
-
-                PostData('@Url.Action("CriarProf", "Home")', aluno, sucess)
+                PostData('@Url.Action("CadastroProf", "Home")', professor, sucess)
             })
-            function sucess(result) {
 
-                console.log(result)
-                console.log("Foi poha")
+            function sucess(Result) {
+
+                if (Result.cadastrado) {
+                    toastr["success"]("Cadastrado com sucesso")
+
+                } else {
+                    toastr["error"]("Erro no cadastro")
+                }
             }
-
         })
-
-
-
     </script>
 }

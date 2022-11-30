@@ -1,0 +1,90 @@
+﻿@model GestaoNotas.Models.ViewModel.alunoViewModel
+@{
+    ViewData["Title"] = "Editar perfil";
+    Layout = ViewBag.tema;
+
+}
+
+<div class="container">
+    <div class="my-3">
+        @ViewData["Title"]
+    </div>
+
+    <div class="row">
+        <form>
+
+            <div class="mb-3">
+                <label for="Nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="Nome" aria-describedby="emailHelp">
+            </div>
+
+            <div class="mb-3">
+                <label for="Email" class="form-label">E-mail</label>
+                <input type="email" class="form-control" id="Email" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="Campus" class="form-label">Campus</label>
+                <input type="text" class="form-control" id="Campus" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="Cpf" class="form-label">Cpf</label>
+                <input type="text" class="form-control" id="Cpf" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="Telefone" class="form-label">Telefone</label>
+                <input type="number" class="form-control" id="Telefone" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="Sexo" class="form-label">Sexo</label>
+                <input type="text" class="form-control" id="Sexo" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="Endereco" class="form-label">Endereco</label>
+                <input type="text" class="form-control" id="Endereco" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="Renda" class="form-label">Renda</label>
+                <input type="text" class="form-control" id="Renda" aria-describedby="emailHelp">
+            </div>
+
+            <button id="BotaoAluno" class="btn btn-primary">Editar</button>
+        </form>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $("#BotaoAluno").click(function () {
+
+                var Aluno = {
+                    Nome: document.querySelector("#Nome").value,
+                    Email: document.querySelector("#Email").value,
+                    Campus: document.querySelector("#Campus").value,
+                    Cpf: document.querySelector("#Cpf").value,
+                    Telefone: document.querySelector("#Telefone").value,
+                    Sexo: document.querySelector("#Sexo").value,
+                    Renda: document.querySelector("#Renda").value,
+                    Endereco: document.querySelector("#Endereco").value
+                }
+                PostData('@Url.Action("CriarAluno", "Home")', Aluno, sucess)
+            })
+
+            function sucess(Result) {
+
+                console.log(Result)
+
+                if (Result.cadastrado) {
+                    toastr["success"]("Cadastrado com sucesso")
+
+                } else {
+                    toastr["error"]("Erro no cadastro")
+
+                }
+                window.location.reload(false);
+
+            }
+        })
+
+    </script>
+}

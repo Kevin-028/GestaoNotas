@@ -8,6 +8,12 @@ namespace GestaoNotas.IRepository
     {
         List<Aluno> GetAll();
         List<alunoViewModel> GetAlunoViewModels();
-        Aluno adcionar(Aluno aluno);
+        bool adcionar(Aluno aluno);
+
+        alunoViewModel GetAluno(int id);
+
+        bool Update(alunoViewModel view);
+
+
     }
 }

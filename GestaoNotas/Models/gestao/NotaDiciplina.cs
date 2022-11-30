@@ -2,7 +2,7 @@
 {
     public class NotaDiciplina
     {
-        public int IdNotaDiciplina { get; set; }
+        public int IdNotaDisciplina { get; set; }
         public int Nota { get; set; }
 
 
@@ -23,13 +23,13 @@
             SetNota(nota);
         }
 
-        public void SetDisciplina(Disciplina disciplina) => IdDisciplina = disciplina.IdDiciplina;
+        public void SetDisciplina(Disciplina disciplina) => IdDisciplina = disciplina.IdDisciplina;
         public void SetNota(int nota) => Nota = nota;
         public void SetDisciplinaId(int idDisciplina) => IdDisciplina = idDisciplina;
 
         public void AddAluno(Aluno aluno)
         {
-            aluno.SetNotaId(IdNotaDiciplina);
+            aluno.SetNotaId(IdNotaDisciplina);
             _aluno.Add(aluno);
         }
         public void RemoveAluno(int idAluno)

@@ -15,9 +15,9 @@ namespace GestaoNotas.Data.map
                 .HasForeignKey(k => k.IdTurma)
                 .IsRequired(false);
 
-            builder.HasOne(x => x.NotaDiciplina)
+            builder.HasOne(x => x.NotaDisciplina)
                 .WithMany(y => y.Alunos)
-                .HasForeignKey(k => k.IdNotaDiciplina)
+                .HasForeignKey(k => k.IdNotaDisciplina)
                 .IsRequired(false);
 
 

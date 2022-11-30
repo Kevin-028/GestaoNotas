@@ -9,7 +9,7 @@ namespace GestaoNotas.Data.map
 
         public void Configure(EntityTypeBuilder<NotaDiciplina> builder)
         {
-            builder.HasKey(x => x.IdNotaDiciplina);
+            builder.HasKey(x => x.IdNotaDisciplina);
 
             builder.HasOne(x => x.Disciplina)
                 .WithMany(y => y.NotaDiciplinas)

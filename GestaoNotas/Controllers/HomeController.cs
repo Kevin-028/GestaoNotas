@@ -7,6 +7,8 @@ using System.Diagnostics;
 using GestaoNotas.Models.Adpter;
 using System.Linq;
 using System.Data.SqlTypes;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using GestaoNotas.Data;
 
 namespace GestaoNotas.Controllers
 {
@@ -18,16 +20,19 @@ namespace GestaoNotas.Controllers
 
         private readonly IProfRepository _profRepository;
 
+        private readonly IDiciplinaRepository _disciplinaRepository;
+
         private readonly ILogger<HomeController> _logger;
 
 
 
-        public HomeController(ILogger<HomeController> logger, IAlunoRepository alunoRepository, ITurmaRepository turmaRepository, IProfRepository profRepository)
+        public HomeController(ILogger<HomeController> logger, IAlunoRepository alunoRepository, ITurmaRepository turmaRepository, IProfRepository profRepository, IDiciplinaRepository disciplinaRepository)
         {
             _logger = logger;
             _alunoRepository = alunoRepository;
             _turmaRepository = turmaRepository;
             _profRepository = profRepository;
+            _disciplinaRepository = disciplinaRepository;
 
         }
 
@@ -36,32 +41,38 @@ namespace GestaoNotas.Controllers
         {
             List<alunoViewModel> alunos = _alunoRepository.GetAlunoViewModels();
 
-            var a = new List<alunoViewModel>();
-
-
-
             //List<alunoViewModel> alunoViewModels = Adapter.ToAluno(alunos);
+            ViewBag.tema = "_Layout";
 
-            return View();
+            return View(alunos);
         }
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+
         public IActionResult Cadastro()
         {
+            ViewBag.tema = "_Layout";
+
             return View();
         }
         public IActionResult CadastroTurma()
         {
+            ViewBag.tema = "_Layout";
+
             return View();
         }
         public IActionResult CadastroProf()
         {
+            ViewBag.tema = "_Layout";
+
             return View();
         }
         public IActionResult CadastroDisciplina()
         {
+            ViewBag.tema = "_Layout";
+
+            ViewBag.IdTurma = new SelectList(_turmaRepository.GetTurmaViewModels(), "IdTurma", "Descricao");
+            ViewBag.IdProfessor = new SelectList(_profRepository.GetProfViewModels(), "IdProfessor", "Nome");
+
+
             return View();
         }
 
@@ -69,46 +80,101 @@ namespace GestaoNotas.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
+            ViewBag.tema = "_Layout";
+
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        //[HttpPost]
-        //public IActionResult CriarAluno(alunoViewModel view)
-        //{
-        //    Aluno aluno = new Aluno(view.Nome, view.Email, view.Campus, view.Cpf, view.Telefone, view.Sexo, view.Endereco, view.Renda);
-        //    _alunoRepository.adcionar(aluno);
-        //    return RedirectToAction("Index");
-        //}
+
 
         [HttpPost]
-        public IActionResult CriarAluno(alunoViewModel view)
+        public JsonResult CriarAluno(alunoViewModel view)
         {
 
             Aluno aluno = Adapter.ToAluno(view);
 
-            _alunoRepository.adcionar(aluno);
+            var a = _alunoRepository.adcionar(aluno);
 
-            return RedirectToAction("~/home/sucesso");
+            var result = new
+            {
+                Cadastrado = a
+            };
+            return Json(result);
         }
 
-        //public IActionResult CriarTurma(Turma turma)
-        //{
-        //    Turma aluno = new Aluno(view.Nome, view.Email, view.Campus, view.Cpf, view.Telefone, view.Sexo, view.Endereco, view.Renda);
-
-
-        //    _turmaRepository.adcionar(turma);
-
-        //    return RedirectToAction("Index");
-        //}
-
-        public IActionResult CriarProf(ProfViewModel view)
+        [HttpPost]
+        public JsonResult CadastroProf(ProfViewModel view)
         {
-            Professor professor = new Professor(view.Nome, view.Campus);
+            Professor professor = Adapter.ToProf(view);
+
+            var a = _profRepository.adcionar(professor);
+
+            var result = new
+            {
+                Cadastrado = a
+            };
+            return Json(result);
+        }      
+        public JsonResult AddTurma(TurmaViewModel view)
+        {
+            Turma turma = Adapter.ToTurma(view);
+
+            var a = _turmaRepository.adcionar(turma);
+
+            var result = new
+            {
+                Cadastrado = a
+            };
+            return Json(result);
+        }     
+        public JsonResult addDisciplina(DisciplicaViewModel view)
+        {
+            Disciplina disciplina = Adapter.ToDisciplina(view);
+
+            var a = _disciplinaRepository.adcionar(disciplina);
+
+            var result = new
+            {
+                Cadastrado = a
+            };
+            return Json(result);
+        }
+
+        [HttpPost]
+        public JsonResult addTurmaAluno(alunoViewModel view)
+        {
+
+            var a = _turmaRepository.CadastroAluno(view);
+
+            var Result = new
+            {
+                data = a
+            };
+
+            return Json(Result);
+
+        }   
+        public PartialViewResult AddNotaAluno(DisciplicaViewModel view)
+        {
 
 
-            _profRepository.adcionar(professor);
 
-            return RedirectToAction("Index");
+            ViewBag.IdTurma = new SelectList(_turmaRepository.GetTurmaViewModels(), "IdTurma", "Descricao");
+
+            ViewBag.IdProfessor = new SelectList(_profRepository.GetProfViewModels(), "IdProfessor", "Nome");
+            
+
+            return PartialView("_addNotaAluno");
+        }      
+        public PartialViewResult TurmaAlunoPartial(int id)
+        {
+
+
+            ViewBag.IdAluno = id;
+
+            ViewBag.IdTurma = new SelectList(_turmaRepository.GetTurmaViewModels(), "IdTurma", "Descricao");
+
+            return PartialView("_addTurma");
         }
 
 
