@@ -162,7 +162,6 @@ namespace GestaoNotas.Controllers
         {
 
 
-
             ViewBag.IdTurma = new SelectList(_turmaRepository.GetTurmaViewModels(), "IdTurma", "Descricao");
 
             ViewBag.IdProfessor = new SelectList(_profRepository.GetProfViewModels(), "IdProfessor", "Nome");
@@ -182,10 +181,18 @@ namespace GestaoNotas.Controllers
         public PartialViewResult ProfTabela()
         {
 
-            List<ProfViewModel> professor = _profRepository.GetProfViewModels();
+            List<ProfViewModel> a = _profRepository.GetProfViewModels();
 
 
-            return PartialView("_ProfTabela", professor);
+            return PartialView("_ProfTabela", a);
+        }    
+        public PartialViewResult TurmaTabela()
+        {
+
+            List<TurmaViewModel> a = _turmaRepository.GetTurmaViewModels();
+
+
+            return PartialView("_TurmaTabela", a);
         }
 
 
