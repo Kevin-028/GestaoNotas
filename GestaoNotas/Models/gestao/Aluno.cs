@@ -16,8 +16,13 @@ namespace GestaoNotas.gestao
         public string Renda { get; set; }
         public string Endereco { get; set; }
 
-
         public int? IdTurma { get; set; }
+
+
+
+
+
+
         public Turma Turma { get; set; }
 
         public int? IdNotaDisciplina { get; set; }
